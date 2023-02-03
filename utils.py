@@ -14,7 +14,7 @@ def create_file_path(filename):
 
 def get_data(filename):
     with open(create_file_path(filename)) as file:
-        return file.read().split('\n')
+        yield file.read().split('\n')
 
 
 def is_file_exist(filename):
@@ -28,7 +28,7 @@ def is_commands_correct(cmd1, cmd2):
 
 
 def execute(value, cmd, data):
-    match(cmd):
+    match cmd:
         case 'filter':
             return execute_filter(value, data)
         case 'map':
